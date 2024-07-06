@@ -39,13 +39,16 @@
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="user_id" name="user_id">
                             <option value="">-</option>
-                            @foreach($users as $user)
-                                <option
-                                    value="{{ $user->id }}" {{ $user->id == $fry->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}"
+                                    {{ old('user_id') == $user->id ? 'selected' : (!old('user_id') && $user->id == $fry->user_id ? 'selected' : '') }}>
+                                    {{ $user->name }}</option>
                             @endforeach
                         </select>
                         <div>
-                            @error('user_id') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('user_id')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -53,16 +56,19 @@
                     <label class="m-0 text-end" for="state">State</label>
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="state" name="state">
-                            <option
-                                value="Already Logged In" {{ $fry->state == 'Already Logged In' ? 'selected' : '' }}>
+                            <option value="Already Logged In"
+                                {{ old('state') == 'Already Logged In' ? 'selected' : (!old('state') && $fry->state == 'Already Logged In' ? 'selected' : '') }}>
                                 Already Logged In
                             </option>
-                            <option value="Disconnection" {{ $fry->state == 'Disconnection' ? 'selected' : '' }}>
+                            <option value="Disconnection"
+                                {{ old('state') == 'Disconnection' ? 'selected' : (!old('state') && $fry->state == 'Disconnection' ? 'selected' : '') }}>
                                 Disconnection
                             </option>
                         </select>
                         <div>
-                            @error('state') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('state')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -70,9 +76,11 @@
                     <label class="m-0 text-end" for="uid"><span class="text-danger mr-1">*</span>UID</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="uid" name="uid" type="text"
-                               value="{{ old('uid') ?? $fry->uid }}">
+                            value="{{ old('uid') ?? $fry->uid }}">
                         <div>
-                            @error('uid') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('uid')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -80,9 +88,11 @@
                     <label class="m-0 text-end" for="phone"><span class="text-danger mr-1">*</span>Phone number</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="phone" name="phone" type="text"
-                               value="{{ old('phone') ?? $fry->phone }}">
+                            value="{{ old('phone') ?? $fry->phone }}">
                         <div>
-                            @error('phone') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('phone')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -90,9 +100,11 @@
                     <label class="m-0 text-end" for="nick_name"><span class="text-danger mr-1">*</span>Nick Name</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="nick_name" name="nick_name" type="text"
-                               value="{{ old('nick_name') ?? $fry->nick_name }}">
+                            value="{{ old('nick_name') ?? $fry->nick_name }}">
                         <div>
-                            @error('nick_name') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('nick_name')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -100,9 +112,11 @@
                     <label class="m-0 text-end" for="language"><span class="text-danger mr-1">*</span>Language</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="language" name="language" type="text"
-                               value="{{ old('language') ?? $fry->language }}">
+                            value="{{ old('language') ?? $fry->language }}">
                         <div>
-                            @error('language') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('language')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -110,11 +124,17 @@
                     <label class="m-0 text-end" for="is_local"><span class="text-danger mr-1">*</span>Is Local?</label>
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="is_local" name="is_local">
-                            <option value="1" {{ $fry->is_local == '1' ? 'selected' : '' }}>Yes</option>
-                            <option value="0" {{ $fry->is_local == '0' ? 'selected' : '' }}>No</option>
+                            <option value="1"
+                                {{ old('is_local') == '1' ? 'selected' : (!old('is_local') && $fry->is_local == '1' ? 'selected' : '') }}>
+                                Yes</option>
+                            <option value="0"
+                                {{ old('is_local') == '0' ? 'selected' : (!old('is_local') && $fry->is_local == '0' ? 'selected' : '') }}>
+                                No</option>
                         </select>
                         <div>
-                            @error('is_local') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('is_local')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -122,9 +142,11 @@
                     <label class="m-0 text-end" for="remark">Remark</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="remark" name="remark" type="text"
-                               value="{{ old('remark') ?? $fry->remark }}">
+                            value="{{ old('remark') ?? $fry->remark }}">
                         <div>
-                            @error('remark') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                            @error('remark')
+                                <span class="text-danger ml-3">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -133,7 +155,8 @@
             <div class="--form-wrapper d-flex">
                 <div class="mr-3" style="width: 100px;"></div>
                 <div class="w-100 d-flex justify-content-between mt-3">
-                    <button onclick="resetFields({{ $fry }})" class="btn btn-sm text-white btn-warning" type="button">
+                    <button onclick="resetFields({{ $fry }})" class="btn btn-sm text-white btn-warning"
+                        type="button">
                         Reset
                     </button>
                     <div>
@@ -174,6 +197,3 @@
         }
     </script>
 @endsection
-
-
-

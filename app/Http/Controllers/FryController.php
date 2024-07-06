@@ -52,7 +52,6 @@ class FryController extends Controller
                             </div>";
 
                     return '<div class="action">' . $btn . '</div>';
-
                 })->rawColumns(['action', 'is_local'])->make(true);
         }
 
@@ -66,7 +65,8 @@ class FryController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $validated = $request->validate([
             'uid' => 'required|unique:fries',
@@ -93,17 +93,41 @@ class FryController extends Controller
         return view('fry.show', compact('fry'));
     }
 
-    public function edit(Fry $fry) {
+    public function edit(Fry $fry)
+    {
         $users = User::all();
 
         return view('fry.edit', compact('fry', 'users'));
     }
 
-    public function update(Request $request) {
-        dd($request->all());
+    public function update(Request $request, Fry $fry)
+    {
+        $rules = [
+            'phone' => 'required',
+            'nick_name' => 'required',
+            'language' => 'required',
+            'is_local' => 'required',
+        ];
+
+        if ($request['uid'] != $fry->uid) {
+            $rules['uid'] = 'required|unique:fries';
+        } else {
+            $rules['uid'] = 'required';
+        }
+
+        $validated = $request->validate($rules);
+
+        $validated['state'] = $request['state'];
+        $validated['remark'] = $request['remark'];
+        $validated['user_id'] = $request['user_id'];
+
+        $fry->update($validated);
+
+        return redirect(route('fry.show', $fry->id))->with('update', 'Fry management');
     }
 
-    public function destroy(Fry $fry) {
+    public function destroy(Fry $fry)
+    {
         $fry->delete();
 
         return 'success';

@@ -20,13 +20,13 @@
     <!-- /.content-header -->
 @endsection
 @section('content')
-    <div class="w-100 bg-white border-top border-primary" >
+    <div class="w-100 bg-white border-top border-primary">
         <div class="d-flex justify-content-between align-items-center p-2">
             <h5>detail</h5>
             <div class="d-flex">
                 <a class="btn btn-secondary" href="{{ route('users.index') }}">Users List</a>
                 <a class="btn btn-primary ml-2" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                <a href='' class="deleteUserButton btn btn-danger ml-2" data-id="{{$user->id}}">Delete</a>
+                <a href='' class="deleteUserButton btn btn-danger ml-2" data-id="{{ $user->id }}">Delete</a>
 
             </div>
         </div>
@@ -48,6 +48,20 @@
                     <label class="m-0 text-end">Name</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $user->name }}
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <label class="m-0 text-end">Role</label>
+                    <div class="ml-3 w-100 border rounded p-2">
+                        <span class="badge badge-success">{{ $user->role?->name }}</span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <label class="m-0 text-end">Permissions</label>
+                    <div class="ml-3 w-100 border rounded p-2">
+                        @foreach ($user->permissions as $permission)
+                            <span class="badge badge-success">{{ $permission->name }}</span>
+                        @endforeach
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
@@ -96,6 +110,3 @@
         });
     </script>
 @endsection
-
-
-

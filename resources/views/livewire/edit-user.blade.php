@@ -43,12 +43,25 @@
                 <div class="w-100 pl-3">
                     @if ($image)
                         <img class="mb-2" src="{{ $image->temporaryUrl() }}" width="100" alt="avatar of {{$user->username}}">
-                    @else
+                    @elseif ($user->image)
                         <img class="mb-2" src="/storage/{{ $user->image }}" width="100" alt="avatar of {{$user->username}}">
                     @endif
                     <input wire:model="image" class="shadow-sm form-control" id="image" type="file">
                     <div>
                         @error('image') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-start mt-3">
+                <label class="m-0 text-end" for="name"><span class="text-danger mr-1">*</span>Role</label>
+                <div class="w-100">
+                    <select wire:model="role" class="shadow-sm form-control ml-3"  id="role">
+                        @foreach ($allRoles as $role)
+                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    <div>
+                        @error('role') <span class="text-danger ml-3">{{ $message }}</span> @enderror
                     </div>
                 </div>
             </div>

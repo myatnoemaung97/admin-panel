@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class EditUser extends Component
 {
@@ -18,11 +19,15 @@ class EditUser extends Component
     public $image;
     public $password;
     public $confirmPassword;
+    public $role;
+    public $allRoles;
 
     public function mount(User $user) {
         $this->name = $user->name;
         $this->username = $user->username;
         $this->password = $user->password;
+        $this->role = $user->role;
+        $this->allRoles = Role::all();
     }
 
     public function render()

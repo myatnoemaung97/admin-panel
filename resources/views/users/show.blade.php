@@ -53,13 +53,13 @@
                 <div class="d-flex align-items-center mt-3">
                     <label class="m-0 text-end">Role</label>
                     <div class="ml-3 w-100 border rounded p-2">
-                        <span class="badge badge-success">{{ $user->role?->name }}</span>
+                        <span class="badge badge-success">{{ $user->getRoleNames()->first() }}</span>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
                     <label class="m-0 text-end">Permissions</label>
                     <div class="ml-3 w-100 border rounded p-2">
-                        @foreach ($user->permissions as $permission)
+                        @foreach ($user->getAllPermissions() as $permission)
                             <span class="badge badge-success">{{ $permission->name }}</span>
                         @endforeach
                     </div>

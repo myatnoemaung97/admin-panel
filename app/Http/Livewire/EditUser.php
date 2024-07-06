@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -21,23 +22,26 @@ class EditUser extends Component
     public $confirmPassword;
     public $role;
     public $allRoles;
+    public $permissions;
 
-    public function mount(User $user) {
+    public function mount(User $user)
+    {
         $this->name = $user->name;
         $this->username = $user->username;
         $this->password = $user->password;
-        $this->role = $user->role;
+        $this->role = $user->getRoleNames()->first();
         $this->allRoles = Role::all();
+        $this->permissions = Role::where('name', $this->role)->first()->permissions;
     }
 
     public function render()
     {
-        return view('livewire.edit-user', [
-            'user' => $this->user,
-            'name' => $this->name,
-            'username' => $this->username,
-            'password' => $this->password,
-        ]);
+        return view('livewire.edit-user');
+    }
+
+    public function updatedRole($value)
+    {
+        $this->permissions = Role::where('name', $value)->first()?->permissions;
     }
 
     public function resetFields()
@@ -49,7 +53,9 @@ class EditUser extends Component
         $this->confirmPassword = '';
     }
 
-    public function update() {
+    public function update()
+    {
+
         $rules = [
             'name' => 'required',
             'password' => 'required',
@@ -79,9 +85,11 @@ class EditUser extends Component
 
         $validated['password'] = Hash::make($validated['password']);
         unset($validated['confirmPassword']);
+
         $this->user->update($validated);
 
-        return redirect()->route('users.show', $this->user->id)->with('update', 'User');
+        $this->user->syncRoles($this->role);
 
+        return redirect()->route('users.show', $this->user->id)->with('update', 'User');
     }
 }

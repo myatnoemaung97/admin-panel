@@ -46,16 +46,14 @@ class CreateRole extends Component
         return redirect()->route('roles.index')->with('create', 'Role');
     }
 
-    public function updated($propertyName)
+    public function updatedunselectedFilter($value)
     {
-        if ($propertyName == 'unselectedFilter') {
-            $this->unselectedPermissions = Permission::whereNotIn('id', Arr::pluck($this->selectedPermissions, 'id'))->get()->toArray();
+        $this->unselectedPermissions = Permission::whereNotIn('id', Arr::pluck($this->selectedPermissions, 'id'))->get()->toArray();
 
-            if ($this->unselectedFilter) {
-                $this->unselectedPermissions = array_filter($this->unselectedPermissions, function ($permission) {
-                    return Str::contains($permission['name'], $this->unselectedFilter);
-                });
-            }
+        if ($this->unselectedFilter) {
+            $this->unselectedPermissions = array_filter($this->unselectedPermissions, function ($permission) {
+                return Str::contains($permission['name'], $this->unselectedFilter);
+            });
         }
     }
 
@@ -69,7 +67,8 @@ class CreateRole extends Component
         });
     }
 
-    public function removePermission($permissionId) {
+    public function removePermission($permissionId)
+    {
         $permission = Permission::findById($permissionId)->toArray();
         $this->selectedPermissions = array_filter($this->selectedPermissions, function ($perm) use ($permissionId) {
             return $perm['id'] != $permissionId;
@@ -90,10 +89,10 @@ class CreateRole extends Component
         $this->unselectedPermissions = Permission::all()->toArray();
     }
 
-    public function resetFields() {
+    public function resetFields()
+    {
         $this->name = '';
         $this->unselectedPermissions = Permission::all()->toArray();
         $this->selectedPermissions = [];
     }
 }
-

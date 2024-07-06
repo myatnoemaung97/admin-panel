@@ -4,6 +4,7 @@ use App\Http\Controllers\AutoResponderController;
 use App\Http\Controllers\FryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -21,6 +22,11 @@ use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
     return redirect('/admin');
+});
+
+Route::get('/test', function () {
+    $user = User::first();
+    dd($user->getRoleNames()->first());
 });
 
 Auth::routes();

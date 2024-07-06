@@ -33,7 +33,7 @@ class EditRole extends Component
             'name' => 'required',
         ];
 
-        if ($this->name != $this->role->name ) {
+        if ($this->name != $this->role->name) {
             $rules['name'] = 'required|unique:roles,name';
         }
 
@@ -50,17 +50,15 @@ class EditRole extends Component
         return redirect()->route('roles.show', $this->role->id)->with('update', 'Role');
     }
 
-    public function updated($propertyName)
+    public function updatedunselectedFilter($value)
     {
-        if ($propertyName == 'unselectedFilter') {
 
-            $this->unselectedPermissions = Permission::whereNotIn('id', Arr::pluck($this->selectedPermissions, 'id'))->get()->toArray();
+        $this->unselectedPermissions = Permission::whereNotIn('id', Arr::pluck($this->selectedPermissions, 'id'))->get()->toArray();
 
-            if ($this->unselectedFilter) {
-                $this->unselectedPermissions = array_filter($this->unselectedPermissions, function ($permission) {
-                    return Str::contains($permission['name'], $this->unselectedFilter);
-                });
-            }
+        if ($this->unselectedFilter) {
+            $this->unselectedPermissions = array_filter($this->unselectedPermissions, function ($permission) {
+                return Str::contains($permission['name'], $this->unselectedFilter);
+            });
         }
     }
 
@@ -96,11 +94,13 @@ class EditRole extends Component
         $this->unselectedPermissions = Permission::all()->toArray();
     }
 
-    public function resetFields() {
+    public function resetFields()
+    {
         $this->initialize();
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         $selected = $this->role->permissions;
 
         $this->name = $this->role->name;
@@ -108,4 +108,3 @@ class EditRole extends Component
         $this->unselectedPermissions = Permission::whereNotIn('id', $selected->pluck('id'))->get()->toArray();
     }
 }
-

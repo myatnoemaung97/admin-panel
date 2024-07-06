@@ -1,0 +1,138 @@
+:root {
+  --primary-color: #ecf0f5;
+  --secondary-color: #3c8dbc;
+  --gray-color: #636b6f;
+}
+
+* {
+  margin: 0 ;
+  padding: 0 ;
+}
+
+body {
+  background-color: var(--primary-color) !important;
+  /* height: 3000px; */
+}
+
+.--color-second {
+  color: var(--secondary-color) !important;
+}
+
+.--bg-second {
+  background-color: var(--secondary-color) !important;
+}
+
+.--fs-14 {
+  font-size: 14px !important;
+}
+
+.--fs-12 {
+  font-size: 12px !important;
+}
+
+.--fs-10 {
+  font-size: 10px !important;
+}
+
+.--gray-color {
+  color: var(--gray-color);
+}
+
+.--navbar-gradient {
+  background: linear-gradient(#538ef8, #538ef8);
+}
+
+.--sidebar-title {
+  background-color: #0ac6c3;
+}
+
+.--sidebar-white {
+  background-color: white;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon > i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.--striped > div:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.--card-title {
+  border-top: 2px solid #dadde4;
+  border-bottom: 1px solid #dadde4;
+  height: 40px;
+}
+
+.--extension > div {
+  width: 35px;
+}
+
+.--extension i {
+  color: var(--gray-color);
+  font-size: 25px;
+}
+
+.--user-setting-edit {
+  border-top: 2px solid blue;
+}
+
+.--form-wrapper {
+  width: 75%;
+  margin: 15px auto 0 auto;
+}
+
+.--form-wrapper label:not(.--no-fixed-width) {
+  width: 100px;
+  text-align: end;
+}
+
+.--custom-dropdown-toggle::after {
+    display: none;
+}
+
+.--permission-list {
+    list-style: none;
+    line-height: 25px;
+    font-size: 14px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.--permission-list li {
+    cursor: pointer;
+}
+
+.--permission-list li:hover {
+    background-color: lightgray;
+}
+
+.--move-all-btn {
+    background-color: lightgray;
+    cursor: pointer;
+    border: 1px solid lightgray;
+}
+
+.--move-all-btn:hover {
+    border: 1px solid gray;
+}
+
+@media screen and (min-width: 992px) {
+  .--card {
+    /* height: 510px; */
+  }
+
+  .--scroll {
+    height: 460px;
+    overflow-y: scroll;
+  }
+}
+
+

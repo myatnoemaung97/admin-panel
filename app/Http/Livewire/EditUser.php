@@ -14,6 +14,7 @@ class EditUser extends Component
 {
     use WithFileUploads;
 
+    public $profile;
     public $user;
     public $name;
     public $username;
@@ -25,7 +26,8 @@ class EditUser extends Component
     public $permissions;
 
     public function mount(User $user)
-    {
+    {   
+        // dd($this->profile);
         $this->name = $user->name;
         $this->username = $user->username;
         $this->password = $user->password;

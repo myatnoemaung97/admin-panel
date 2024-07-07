@@ -21,7 +21,7 @@
     <div class="d-flex justify-content-end mb-2">
         <a class="btn btn-success" href="{{ route('fry.create') }}">Add</a>
     </div>
-    <div class="container pt-3 bg-white border-top border-primary">
+    <div class="pt-3 bg-white border-top border-primary">
 
         <div class="table-responsive">
             <table id="fry" class="table table-bordered table-hover">

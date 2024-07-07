@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'role-management',
             'dashboard',
             'fry-management',
+            'menu-management'
         ];
 
         foreach ($permissions as $permission) {

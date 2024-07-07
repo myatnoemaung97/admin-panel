@@ -22,6 +22,10 @@ class UserController extends Controller
                 ->editColumn('updated_at', function ($user) {
                     return $user->updated_at->format('Y-m-d H:i:s');
                 })
+                ->addColumn('role', function ($user) {
+                    $role = $user->getRoleNames()->first();
+                    return "<span class='badge badge-success'>$role</span>";
+                })
                 ->addColumn('action', function ($user) {
                     $isAdmin = $user->name == 'Admin';
                     $links = "<a class='dropdown-item' href='/admin/auth/users/$user->id'>show</a>";
@@ -42,7 +46,7 @@ class UserController extends Controller
 
                     return '<div class="action">' . $btn . '</div>';
 
-                })->rawColumns(['action'])->make(true);
+                })->rawColumns(['action', 'role'])->make(true);
         }
 
         return view('users.index');

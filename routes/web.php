@@ -4,7 +4,7 @@ use App\Http\Controllers\AutoResponderController;
 use App\Http\Controllers\FryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MenuController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
@@ -25,10 +25,11 @@ Route::get('/', function () {
     return redirect('/admin');
 });
 
-// Route::get('/test', function () {
-//     $user = User::first();
-//     dd($user->getRoleNames()->first());
-// });
+Route::get('/test', function () {
+    dd(auth()->user());
+    $user = User::first();
+    dd($user->getRoleNames()->first());
+});
 
 Auth::routes();
 
@@ -44,7 +45,13 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('auth')->group(function () {
             Route::resource('users', UserController::class)->except('store', 'update')->middleware('can:user-management');
             Route::resource('roles', RoleController::class)->except('store', 'update')->middleware('can:role-management');
-            Route::view('profile', 'users.edit', ['profile' => true, 'user' => auth()->user()])->name('profile.edit');
+            Route::resource('menus', MenuController::class)->middleware('can:menu-management');
+            Route::get('profile', function () {
+                return view('users.edit', [
+                    'profile' => true,
+                    'user' => auth()->user()
+                ]);
+            })->name('profile.edit');
         });
     });
 });

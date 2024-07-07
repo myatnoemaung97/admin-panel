@@ -26,14 +26,13 @@ class EditUser extends Component
     public $permissions;
 
     public function mount(User $user)
-    {   
-        // dd($this->profile);
+    {
         $this->name = $user->name;
         $this->username = $user->username;
         $this->password = $user->password;
         $this->role = $user->getRoleNames()->first();
         $this->allRoles = Role::all();
-        $this->permissions = Role::where('name', $this->role)->first()->permissions;
+        $this->permissions = Role::where('name', $this->role)->first()?->permissions;
     }
 
     public function render()
@@ -57,7 +56,6 @@ class EditUser extends Component
 
     public function update()
     {
-
         $rules = [
             'name' => 'required',
             'password' => 'required',
@@ -90,7 +88,13 @@ class EditUser extends Component
 
         $this->user->update($validated);
 
-        $this->user->syncRoles($this->role);
+        if (!$this->profile) {
+            $this->user->syncRoles($this->role);
+        }
+
+        if ($this->profile) {
+            return redirect()->route('profile.edit')->with('update', 'Profile');
+        }
 
         return redirect()->route('users.show', $this->user->id)->with('update', 'User');
     }

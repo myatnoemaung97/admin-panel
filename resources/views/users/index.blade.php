@@ -21,14 +21,14 @@
     <div class="d-flex justify-content-end mb-2">
         <a class="btn btn-success" href="{{ route('users.create') }}">Add User</a>
     </div>
-    <div class="container pt-3 bg-white border-top border-primary">
-
+    <div class="pt-3 bg-white border-top border-primary">
         <table id="users" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Name</th>
+                <th>Role</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Action</th>
@@ -60,6 +60,9 @@
                 },
                 {
                     "data": "name"
+                },
+                {
+                    "data": "role"
                 },
                 {
                     'data': 'created_at'

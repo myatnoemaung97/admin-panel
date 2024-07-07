@@ -20,7 +20,7 @@
     <!-- /.content-header -->
 @endsection
 @section('content')
-    <livewire:edit-user :user="auth()->user()" :profile="true" />
+    <livewire:edit-user :user="$user" :profile="$profile ?? false" />
 @endsection
 
 

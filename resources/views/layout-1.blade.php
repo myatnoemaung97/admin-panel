@@ -171,9 +171,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     @endcan
                                     @can('role-management')
                                         <li class="nav-item">
-                                            <a href="/admin/auth/roles" class="nav-link">
+                                            <a href="{{ route('roles.index') }}" class="nav-link">
                                                 <i class="fa-solid fa-user mr-2"></i>
                                                 <p>Role Management</p>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('menu-management')
+                                        <li class="nav-item">
+                                            <a href="{{ route('menus.index') }}" class="nav-link">
+                                                <i class="fa-solid fa-bars mr-2"></i>
+                                                <p>Menu Management</p>
                                             </a>
                                         </li>
                                     @endcan

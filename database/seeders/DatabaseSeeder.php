@@ -23,13 +23,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(20)->create();
-        
+
         $permissions = [
             'user-management',
             'role-management',
             'dashboard',
             'fry-management',
-            'menu-management',
         ];
 
         foreach ($permissions as $permission) {

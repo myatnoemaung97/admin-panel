@@ -23,15 +23,20 @@ class UserController extends Controller
                     return $user->updated_at->format('Y-m-d H:i:s');
                 })
                 ->addColumn('action', function ($user) {
+                    $isAdmin = $user->name == 'Admin';
+                    $links = "<a class='dropdown-item' href='/admin/auth/users/$user->id'>show</a>";
+
+                    if (!$isAdmin) {
+                        $links .= "<a class='dropdown-item' href='/admin/auth/users/$user->id/edit'>edit</a>
+                                <a href='' class='deleteUserButton dropdown-item' data-id='$user->id'>delete</a>";
+                    }
 
                     $btn = "<div class='dropdown'>
                               <button class='--custom-dropdown-toggle bg-transparent border-0 dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false'>
-                                <i class='fa-solid fa-ellipsis-vertical'></i>
+                                <i class='fas fa-ellipsis-v'></i>
                               </button>
                               <div class='dropdown-menu'>
-                                <a class='dropdown-item' href='/admin/auth/users/$user->id/edit'>edit</a>
-                                <a class='dropdown-item' href='/admin/auth/users/$user->id'>show</a>
-                                <a href='' class='deleteUserButton dropdown-item' data-id='$user->id'>delete</a>
+                                $links
                               </div>
                             </div>";
 
@@ -49,7 +54,7 @@ class UserController extends Controller
     }
 
     public function show(User $user)
-    {   
+    {
         return view('users.show', [
             'user' => $user,
         ]);

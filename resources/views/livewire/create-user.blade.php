@@ -37,6 +37,30 @@
                 </div>
             </div>
             <div class="d-flex align-items-start mt-3">
+                <label class="m-0 text-end" for="name">Role</label>
+                <div class="w-100">
+                    <select wire:model="role" class="shadow-sm form-control ml-3"  id="role">
+                        <option value="">-</option>
+                        @foreach ($allRoles as $__role)
+                            <option value="{{ $__role->name }}" {{ $role == $__role->name ? 'selected' : ''}}>{{ $__role->name }}</option>
+                        @endforeach
+                    </select>
+                    <div>
+                        @error('role') <span class="text-danger ml-3">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-start mt-3">
+                <label class="m-0 text-end">Permissions</label>
+                <div class="ml-3 w-100 border rounded p-2">
+                    @if($role)
+                        @foreach ($permissions as $permission)
+                            <span class="badge badge-success">{{ $permission->name }}</span>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            <div class="d-flex align-items-start mt-3">
                 <label class="m-0 text-end" for="password"><span class="text-danger mr-1">*</span>Password</label>
                 <div class="w-100">
                     <input wire:model="password" class="shadow-sm form-control ml-3" id="password" type="password">

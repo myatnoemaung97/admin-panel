@@ -79,9 +79,9 @@ class CreateRole extends Component
 
     public function addAllPermission()
     {
-//        $this->unselectedPermissions = [];
-//        $this->selectedPermissions = Permission::all()->toArray();
-        $this->selectedPermissions[] = $this->unselectedPermissions;
+        $this->unselectedPermissions = [];
+        $this->selectedPermissions = Permission::all()->toArray();
+//        $this->selectedPermissions[] = $this->unselectedPermissions;
 
 //        dd($this->selectedPermissions);
     }

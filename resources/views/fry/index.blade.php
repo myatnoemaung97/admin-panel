@@ -21,7 +21,7 @@
     <div class="d-flex justify-content-end mb-2">
         <a class="btn btn-success" href="{{ route('fry.create') }}">Add</a>
     </div>
-    <div class="pt-3 bg-white border-top border-primary">
+    <div class="pt-3 bg-white border-top border-primary" style="font-size: 14px;">
 
         <div class="table-responsive">
             <table id="fry" class="table table-bordered table-hover">
@@ -36,6 +36,7 @@
                     <th>UID</th>
                     <th>Language</th>
                     <th>Remark</th>
+                    <th>Open</th>
                     <th>Updated</th>
                     <th>Action</th>
                 </tr>
@@ -86,6 +87,9 @@
                 },
                 {
                     "data": "remark"
+                },
+                {
+                    'data': 'open'
                 },
                 {
                     'data': 'updated_at'

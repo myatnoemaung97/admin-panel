@@ -38,6 +38,11 @@ class FryController extends Controller
                 ->editColumn('user_id', function ($fry) {
                     return $fry->user->name ?? '';
                 })
+                ->addColumn('open', function ($fry) {
+                    return "
+                        <a href='/run?file_name=$fry->uid'>$fry->uid</a>
+                    ";
+                })
                 ->addColumn('action', function ($fry) {
 
                     $btn = "<div class='dropdown'>
@@ -52,7 +57,7 @@ class FryController extends Controller
                             </div>";
 
                     return '<div class="action">' . $btn . '</div>';
-                })->rawColumns(['action', 'is_local'])->make(true);
+                })->rawColumns(['action', 'is_local', 'open'])->make(true);
         }
 
         return view('fry.index');

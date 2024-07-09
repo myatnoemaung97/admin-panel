@@ -18,5 +18,5 @@
     <!-- /.content-header -->
 @endsection
 @section('content')
-    <h1>Autoresponder</h1>
+    <livewire:create-autoresponder />
 @endsection

@@ -50,6 +50,14 @@
                         {{ $user->name }}
                     </div>
                 </div>
+                @if($user->image)
+                    <div class="d-flex align-items-center mt-3">
+                        <label class="m-0 text-end">Avatar</label>
+                        <div class="ml-3 w-100 border rounded p-2">
+                            <img src="/storage/{{$user->image }}" width="150">
+                        </div>
+                    </div>
+                @endif
                 <div class="d-flex align-items-center mt-3">
                     <label class="m-0 text-end">Role</label>
                     <div class="ml-3 w-100 border rounded p-2">
@@ -82,7 +90,7 @@
 @endsection
 @section('scripts')
     <script>
-        $(document).on('click', '.deleteUserButton', function(a) {
+        $(document).on('click', '.deleteUserButton', function (a) {
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
@@ -95,7 +103,7 @@
                     $.ajax({
                         url: '/admin/auth/users/' + id,
                         type: 'DELETE',
-                        success: function() {
+                        success: function () {
                             window.location.href = '/admin/auth/users'
                         }
                     });

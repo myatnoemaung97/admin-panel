@@ -58,7 +58,7 @@
                         <img class="mb-2" src="/storage/{{ $user->image }}" width="100"
                             alt="avatar of {{ $user->username }}">
                     @endif
-                    <input wire:model="image" class="shadow-sm form-control" id="image" type="file">
+                    <input wire:model="image" class="shadow-sm form-control" id="image" type="file" accept="image/*">
                     <div>
                         @error('image')
                             <span class="text-danger ml-3">{{ $message }}</span>

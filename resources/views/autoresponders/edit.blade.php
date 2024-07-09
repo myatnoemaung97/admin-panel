@@ -4,12 +4,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Customer Service Management</h1>
+                    <div class="d-flex align-items-center">
+                        <h1 class="m-0">Autoresponder Template</h1><span class="ml-2 text-secondary">edit</span>
+                    </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a class="text-dark" href="/admin">Home</a></li>
-                        {{-- <li class="breadcrumb-item active">Starter Page</li> --}}
+                        <li class="breadcrumb-item active">Starter Page</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -18,5 +20,8 @@
     <!-- /.content-header -->
 @endsection
 @section('content')
-    <h1>Autoresponder</h1>
+    <livewire:edit-autoresponder :autoresponder="$autoresponder"/>
 @endsection
+
+
+

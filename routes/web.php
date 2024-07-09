@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\AutoResponderController;
+use App\Http\Controllers\CustomerServiceController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MenuController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,26 +25,24 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    dd(auth()->user());
-    $user = User::first();
-    dd($user->getRoleNames()->first());
+    dd(config('app.env'));
 });
 
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', function () {
-        return view('dashboard');
-    })->middleware('can:dashboard');
+    Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('can:dashboard');
+
 
     Route::prefix('admin')->group(function () {
-        Route::resource('setting_chat', AutoResponderController::class);
+        Route::resource('autoresponders', AutoResponderController::class)->middleware('can:autoresponder-management');
+        Route::resource('customer-service', CustomerServiceController::class)->except('show')->middleware('can:customer-service-management');
         Route::resource('fry', FryController::class)->middleware('can:fry-management');
 
         Route::prefix('auth')->group(function () {
             Route::resource('users', UserController::class)->except('store', 'update')->middleware('can:user-management');
             Route::resource('roles', RoleController::class)->except('store', 'update')->middleware('can:role-management');
-            Route::resource('menus', MenuController::class)->middleware('can:menu-management');
+//            Route::resource('menus', MenuController::class)->middleware('can:menu-management');
             Route::get('profile', function () {
                 return view('users.edit', [
                     'profile' => true,

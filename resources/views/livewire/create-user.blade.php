@@ -30,7 +30,7 @@
                     @if ($image)
                         <img class="mb-2" src="{{ $image->temporaryUrl() }}" width="100">
                     @endif
-                    <input wire:model="image" class="shadow-sm form-control" id="image" type="file">
+                    <input wire:model="image" class="shadow-sm form-control" id="image" type="file" accept="image/*">
                     <div>
                         @error('image') <span class="text-danger ml-3">{{ $message }}</span> @enderror
                     </div>

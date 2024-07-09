@@ -28,14 +28,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('qweasd')
         ]);
 
-        User::factory(20)->create();
+        User::factory(10)->create();
 
         $permissions = [
             'user-management',
             'role-management',
             'dashboard',
             'fry-management',
-            'menu-management'
+//            'menu-management',
+            'autoresponder-management',
+            'customer-service-management',
         ];
 
         foreach ($permissions as $permission) {
@@ -54,6 +56,6 @@ class DatabaseSeeder extends Seeder
         $staffRole->syncPermissions(Permission::whereIn('id', [1, 2, 3])->pluck('id'));
 
         $admin->assignRole('Admin');
-        $staff->assignRole('Staff');        
+        $staff->assignRole('Staff');
     }
 }

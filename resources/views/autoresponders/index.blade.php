@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Customer Service Management</h1>
+                    <h1 class="m-0">客户服务管理</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,22 +19,21 @@
 @endsection
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a class="btn btn-success" href="{{ route('autoresponders.create') }}">Add</a>
+        <a class="btn btn-success" href="{{ route('autoresponders.create') }}">创建</a>
     </div>
     <div class="pt-3 bg-white border-top border-primary">
-
         <div class="table-responsive">
             <table id="autoresponders" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Language</th>
-                    <th>Customer Service Name</th>
-                    <th>First Sentence Auto Reply Picture</th>
-                    <th>Android Picture of Second Auto Reply</th>
-                    <th>IOS Picture of Second Auto Reply</th>
-                    <th>Created</th>
-                    <th>Action</th>
+                    <th>语言</th>
+                    <th>客户服务名称</th>
+                    <th>第一张自动回复图片</th>
+                    <th>第二次自动回复的 Android 图片</th>
+                    <th>第二次自动回复的 IOS 图片</th>
+                    <th>创建于</th>
+                    <th>行动</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,7 +87,7 @@
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this auto respond template?',
+                title: '您想删除此模板吗？',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -104,7 +103,7 @@
 
                     Swal.fire(
                         'Deleted!',
-                        'Template has been deleted.',
+                        '模板已删除。',
                         'success'
                     )
                 }

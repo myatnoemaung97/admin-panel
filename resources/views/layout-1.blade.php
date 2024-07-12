@@ -62,16 +62,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    <img class="rounded-circle" src="/dist/img/user2-160x160.jpg" alt="admin profile pic"
+                    <img class="rounded-circle" src="/storage/{{ auth()->user()->image }}" alt="admin profile pic"
                          width="25">
-                    <span class="ml-2 text-white">Adminstrator</span>
+                    <span class="ml-2 text-white">{{ auth()->user()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <div class="d-flex flex-column justify-content-center align-items-center pt-3 pb-3 --bg-second">
                         <img class="rounded-circle" src="/dist/img/user2-160x160.jpg" alt="admin profile pic"
                              width="70">
                         <div class="mt-3 text-white">
-                            <p class="text-center">Adminstrator</p>
+                            <p class="text-center">{{ auth()->user()->username }}</p>
                             <p class="text-center --fs-12">Member since admin 2023-11-06 23:59:04</p>
                         </div>
                     </div>
@@ -95,8 +95,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="/admin" class="brand-link">
                 {{-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
               style="opacity: .8"> --}}
-                <span class="text-white font-weight-bold ">Admin</span>
-                <span class="text-white brand-text">Panel</span>
+                <span class="text-white font-weight-bold ">管理员</span>
+                <span class="text-white brand-text">后台</span>
             </a>
         </div>
 
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     @endif
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block text-dark">{{ auth()->user()->name }}</a>
+                    <a href="#" class="d-block text-dark">{{ auth()->user()->username }}</a>
                 </div>
             </div>
 
@@ -138,7 +138,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="/admin/fry" class="nav-link">
                                 <i class="fa-solid fa-truck-medical mr-2"></i>
                                 <p>
-                                    Fry Management
+                                    鱼苗管理
                                 </p>
                             </a>
                         </li>
@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="/admin" class="nav-link">
                                 <i class="fa-solid fa-chart-column mr-2"></i>
                                 <p>
-                                    Dashboard
+                                    仪表盘
                                 </p>
                             </a>
                         </li>
@@ -158,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link">
                                 <i class="fa-solid fa-server mr-2"></i>
                                 <p class="text-dark">
-                                    Admin Management
+                                    行政管理
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -167,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li class="nav-item">
                                         <a href="/admin/auth/users" class="nav-link">
                                             <i class="fa-solid fa-users mr-2"></i>
-                                            <p>Users Management</p>
+                                            <p>用户管理</p>
                                         </a>
                                     </li>
                                 @endcan
@@ -175,7 +175,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li class="nav-item">
                                         <a href="{{ route('roles.index') }}" class="nav-link">
                                             <i class="fa-solid fa-user mr-2"></i>
-                                            <p>Role Management</p>
+                                            <p>角色管理</p>
                                         </a>
                                     </li>
                                 @endcan
@@ -215,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link">
                                 <i class="fa-solid fa-hands-asl-interpreting mr-2"></i>
                                 <p class="text-dark">
-                                    Customer Management
+                                    客户管理
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -224,7 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li class="nav-item">
                                         <a href="{{ route('autoresponders.index') }}" class="nav-link">
                                             <i class="fa-solid fa-bars mr-2"></i>
-                                            <p>Autoresponder Template</p>
+                                            <p>自动回复模板</p>
                                         </a>
                                     </li>
                                 @endcan
@@ -232,7 +232,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li class="nav-item">
                                         <a href="{{ route('customer-service.index') }}" class="nav-link">
                                             <i class="fa-solid fa-bars mr-2"></i>
-                                            <p>Customer Service List</p>
+                                            <p>客户服务列表</p>
                                         </a>
                                     </li>
                                 @endcan

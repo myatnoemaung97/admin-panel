@@ -5,7 +5,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <div class="d-flex align-items-center">
-                        <h1 class="m-0">Fry Management</h1><span class="ml-2 text-secondary">detail</span>
+                        <h1 class="m-0">鱼苗管理</h1><span class="ml-2 text-secondary">详细</span>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -24,10 +24,9 @@
         <div class="d-flex justify-content-between align-items-center p-2">
             <h5>detail</h5>
             <div class="d-flex">
-                <a class="btn btn-secondary" href="{{ route('fry.index') }}">Fry Management List</a>
-                <a class="btn btn-primary ml-2" href="{{ route('fry.edit', $fry->id) }}">Edit</a>
-                <a href='' class="deleteFryButton btn btn-danger ml-2" data-id="{{$fry->id}}">Delete</a>
-
+                <a class="btn btn-secondary" href="{{ route('fry.index') }}">鱼苗管理清单</a>
+                <a class="btn btn-primary ml-2" href="{{ route('fry.edit', $fry->id) }}">编辑</a>
+                <a href='' class="deleteFryButton btn btn-danger ml-2" data-id="{{$fry->id}}">删除</a>
             </div>
         </div>
         <div class="border-top border-bottom pb-3">
@@ -39,67 +38,61 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">UID</label>
+                    <label class="m-0 text-end">唯一标识</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->uid }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Created At</label>
-                    <div class="ml-3 w-100 border rounded p-2">
-                        {{ $fry->created_at }}
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Phone number</label>
+                    <label class="m-0 text-end">电话号码</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->phone }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Nick name</label>
+                    <label class="m-0 text-end">别名</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->nick_name }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">User Id</label>
+                    <label class="m-0 text-end">指派给</label>
                     <div class="ml-3 w-100 border rounded p-2">
-                        {{ $fry->user_id }}
+                        {{ $fry->user->name }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Language</label>
+                    <label class="m-0 text-end">语言</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->language }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Phone number</label>
+                    <label class="m-0 text-end">电话号码</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->phone }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Created At</label>
+                    <label class="m-0 text-end">创建于</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->created_at }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Updated At</label>
+                    <label class="m-0 text-end">更新于</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->updated_at }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Is local</label>
+                    <label class="m-0 text-end">是本地的吗？</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->is_local }}
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-3">
-                    <label class="m-0 text-end">Remark</label>
+                    <label class="m-0 text-end">评论</label>
                     <div class="ml-3 w-100 border rounded p-2">
                         {{ $fry->remark }}
                     </div>
@@ -114,7 +107,7 @@
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this fry?',
+                title: '你想删除这个吗？',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -130,7 +123,7 @@
 
                     Swal.fire(
                         'Deleted!',
-                        'Fry management has been deleted.',
+                        '成功删除。',
                         'success'
                     )
                 }

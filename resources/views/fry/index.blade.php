@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Fry Management/List</h1>
+                    <h1 class="m-0">鱼苗管理/清单</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,26 +19,26 @@
 @endsection
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a class="btn btn-success" href="{{ route('fry.create') }}">Add</a>
+        <a class="btn btn-success" href="{{ route('fry.create') }}">创建</a>
     </div>
     <div class="pt-3 bg-white border-top border-primary" style="font-size: 14px;">
 
         <div class="table-responsive">
-            <table id="fry" class="table table-bordered table-hover">
+            <table id="fry" class="table table-bordered table-hover" style="width: 100% !important;">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Phone</th>
-                    <th>Nick Name</th>
-                    <th>Local?</th>
-                    <th>Assignment</th>
-                    <th>State</th>
-                    <th>UID</th>
-                    <th>Language</th>
-                    <th>Remark</th>
-                    <th>Open</th>
-                    <th>Updated</th>
-                    <th>Action</th>
+                    <th>电话</th>
+                    <th>昵称</th>
+                    <th>是本地的吗?</th>
+                    <th>分配给</th>
+                    <th>状态</th>
+                    <th>唯一标识</th>
+                    <th>语言</th>
+                    <th>评论</th>
+                    <th>开</th>
+                    <th>更新于</th>
+                    <th>行动</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -104,7 +104,7 @@
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this fry?',
+                title: '你想删除这个吗?',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -120,7 +120,7 @@
 
                     Swal.fire(
                         'Deleted!',
-                        'Fry has been deleted.',
+                        '成功删除',
                         'success'
                     )
                 }

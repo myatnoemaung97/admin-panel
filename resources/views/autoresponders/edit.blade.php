@@ -5,13 +5,13 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <div class="d-flex align-items-center">
-                        <h1 class="m-0">Autoresponder Template</h1><span class="ml-2 text-secondary">edit</span>
+                        <h1 class="m-0">自动回复模板</h1><span class="ml-2 text-secondary">编辑</span>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a class="text-dark" href="/admin">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
+{{--                        <li class="breadcrumb-item active">Starter Page</li>--}}
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Role List</h1>
+                    <h1 class="m-0">角色列表</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,7 +19,7 @@
 @endsection
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a class="btn btn-success" href="{{ route('roles.create') }}">Create Role</a>
+        <a class="btn btn-success" href="{{ route('roles.create') }}">创建</a>
     </div>
     <div class="pt-3 bg-white border-top border-primary">
 
@@ -27,10 +27,10 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Action</th>
+                <th>名字</th>
+                <th>创建于</th>
+                <th>更新于</th>
+                <th>行动</th>
             </tr>
             </thead>
             <tbody>
@@ -73,7 +73,7 @@
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this role?',
+                title: '您想删除这个角色吗？',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -89,7 +89,7 @@
 
                     Swal.fire(
                         'Deleted!',
-                        'Role has been deleted.',
+                        '角色已删除。',
                         'success'
                     )
                 }

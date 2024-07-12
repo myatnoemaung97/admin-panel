@@ -1,16 +1,16 @@
 <div class="w-100 bg-white border-top border-primary">
     <div class="d-flex justify-content-between align-items-center p-2">
-        <h5>edit</h5>
+        <h5>展览</h5>
         <div>
-            <a class="btn btn-secondary" href="{{ route('roles.index') }}">Roles List</a>
-            <a class="btn btn-primary ml-2" href="{{ route('roles.show', $role->id) }}">Show</a>
+            <a class="btn btn-secondary" href="{{ route('roles.index') }}">角色列表</a>
+            <a class="btn btn-primary ml-2" href="{{ route('roles.show', $role->id) }}">展览</a>
         </div>
     </div>
     <form wire:submit.prevent="save" class="border-top border-bottom pb-3">
         <hr class="m-0">
         <div class="--form-wrapper">
             <div class="d-flex align-items-start">
-                <label class="m-0 text-end" for="name"><span class="text-danger mr-1">*</span>Name</label>
+                <label class="m-0 text-end" for="name"><span class="text-danger mr-1">*</span>名字</label>
                 <div class="w-100">
                     <input wire:model="name" class="shadow-sm form-control ml-3" id="name" type="text">
                     <div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-start mt-3">
-                <label class="m-0 text-end" for="name">Permission</label>
+                <label class="m-0 text-end" for="name">权限</label>
                 <div class="w-100 row ml-3 ">
                     <input wire:model="unselectedFilter" class="form-control col-6" placeholder="filter">
                     <div class="col-6"></div>
@@ -64,15 +64,15 @@
         <div class="--form-wrapper d-flex">
             <div class="mr-3" style="width: 100px;"></div>
             <div class="w-100 d-flex justify-content-between mt-3">
-                <button wire:click="resetFields" class="btn btn-sm text-white btn-warning" type="button">Reset</button>
+                <button wire:click="resetFields" class="btn btn-sm text-white btn-warning" type="button">重置</button>
                 <div>
-                    <input type="checkbox" name="check" id="check">
-                    <label class="--no-fixed-width mr-2" for="check">Check</label>
-                    <input type="checkbox" name="continue-create" id="continue-create">
-                    <label class="--no-fixed-width mr-2" for="continue-create">Continue Creating</label>
-                    <input type="checkbox" name="continue-edit" id="continue-edit">
-                    <label class="--no-fixed-width mr-2" for="continue-edit">Continue Editing</label>
-                    <button class="btn btn-sm text-white --bg-second" type="submit">Submit</button>
+{{--                    <input type="checkbox" name="check" id="check">--}}
+{{--                    <label class="--no-fixed-width mr-2" for="check">Check</label>--}}
+{{--                    <input type="checkbox" name="continue-create" id="continue-create">--}}
+{{--                    <label class="--no-fixed-width mr-2" for="continue-create">Continue Creating</label>--}}
+{{--                    <input type="checkbox" name="continue-edit" id="continue-edit">--}}
+{{--                    <label class="--no-fixed-width mr-2" for="continue-edit">Continue Editing</label>--}}
+                    <button class="btn btn-sm text-white --bg-second" type="submit">提交</button>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <div class="d-flex align-items-center">
-                        <h1 class="m-0">User</h1><span class="ml-2 text-secondary">edit</span>
+                        <h1 class="m-0">用户</h1><span class="ml-2 text-secondary">编辑</span>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">

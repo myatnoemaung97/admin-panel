@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Customer Service List</h1>
+                    <h1 class="m-0">客户服务列表</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a class="text-dark" href="/admin">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
+{{--                        <li class="breadcrumb-item active">Starter Page</li>--}}
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,7 +19,7 @@
 @endsection
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a class="btn btn-success" href="{{ route('customer-service.create') }}">Add</a>
+        <a class="btn btn-success" href="{{ route('customer-service.create') }}">创建</a>
     </div>
     <div class="pt-3 bg-white border-top border-primary">
         <div class="table-responsive">
@@ -27,10 +27,10 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Customer service staff</th>
-                    <th>Dialog Template</th>
-                    <th>Created at</th>
-                    <th>Action</th>
+                    <th>客户服务人员</th>
+                    <th>对话框模板</th>
+                    <th>创建于</th>
+                    <th>行动</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,7 +75,7 @@
             a.preventDefault();
             const id = $(this).data('id');
             Swal.fire({
-                title: 'Do you want to delete this customer service item?',
+                title: '你想删除这个吗？',
                 showCancelButton: true,
                 confirmButtonText: 'Delete',
                 confirmButtonColor: '#FF0000',
@@ -91,7 +91,7 @@
 
                     Swal.fire(
                         'Deleted!',
-                        'Customer service item has been deleted.',
+                        '成功删除',
                         'success'
                     )
                 }

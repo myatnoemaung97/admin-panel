@@ -117,11 +117,11 @@
           <small class="text-danger">{{ $message }}</small>
         @enderror
       </div>
-      <div class="d-flex justify-content-between align-items-center mt-3">
-        <div>
-          <input type="checkbox" id="remember">
-          <label class="--fs-14" for="remember">Remember me</label>
-        </div>
+      <div class="d-flex justify-content-end align-items-center mt-3">
+{{--        <div>--}}
+{{--          <input type="checkbox" id="remember">--}}
+{{--          <label class="--fs-14" for="remember">Remember me</label>--}}
+{{--        </div>--}}
         <button class="btn btn-sm --bg-second text-white" type="submit">Log in</button>
       </div>
     </form>

@@ -5,7 +5,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <div class="d-flex align-items-center">
-                        <h1 class="m-0">Fry Management</h1><span class="ml-2 text-secondary">create</span>
+                        <h1 class="m-0">鱼苗管理</h1><span class="ml-2 text-secondary">创建</span>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,8 +22,8 @@
 @section('content')
     <div class="w-100 bg-white border-top border-primary">
         <div class="d-flex justify-content-between align-items-center p-2">
-            <h5>create</h5>
-            <a class="btn btn-secondary" href="{{ route('fry.index') }}">Fry Management List</a>
+            <h5>创建</h5>
+            <a class="btn btn-secondary" href="{{ route('fry.index') }}">鱼苗管理清单</a>
         </div>
         <form class="border-top border-bottom pb-3" action="/admin/fry" method="post">
             @csrf
@@ -31,7 +31,7 @@
             <hr class="m-0">
             <div class="--form-wrapper">
                 <div class="d-flex align-items-start">
-                    <label class="m-0 text-end" for="user_id">Assignment</label>
+                    <label class="m-0 text-end" for="user_id">指派给</label>
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="user_id" name="user_id">
                             <option value="">-</option>
@@ -45,11 +45,11 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="state">State</label>
+                    <label class="m-0 text-end" for="state">状态</label>
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="state" name="state">
-                            <option value="Already Logged In" {{ old('state') == 'Already Logged In' ? 'selected' : '' }}>Already Logged In</option>
-                            <option value="Disconnection" {{ old('state') == 'Disconnection' ? 'selected' : '' }}>Disconnection</option>
+                            <option value="已登录" {{ old('state') == '已登录' ? 'selected' : '' }}>已登录</option>
+                            <option value="未登记" {{ old('state') == '未登记' ? 'selected' : '' }}>未登记</option>
                         </select>
                         <div>
                             @error('state') <span class="text-danger ml-3">{{ $message }}</span> @enderror
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="uid"><span class="text-danger mr-1">*</span>UID</label>
+                    <label class="m-0 text-end" for="uid"><span class="text-danger mr-1">*</span>唯一标识</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="uid" name="uid" type="text" value="{{ old('uid') }}">
                         <div>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="phone"><span class="text-danger mr-1">*</span>Phone number</label>
+                    <label class="m-0 text-end" for="phone"><span class="text-danger mr-1">*</span>电话号码</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="phone" name="phone" type="text" value="{{ old('phone') }}">
                         <div>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="nick_name"><span class="text-danger mr-1">*</span>Nick Name</label>
+                    <label class="m-0 text-end" for="nick_name"><span class="text-danger mr-1">*</span>别名</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="nick_name" name="nick_name" type="text" value="{{ old('nick_name') }}">
                         <div>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="language"><span class="text-danger mr-1">*</span>Language</label>
+                    <label class="m-0 text-end" for="language"><span class="text-danger mr-1">*</span>语言</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="language" name="language" type="text" value="{{ old('language') }}">
                         <div>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="is_local"><span class="text-danger mr-1">*</span>Is Local?</label>
+                    <label class="m-0 text-end" for="is_local"><span class="text-danger mr-1">*</span>是本地的吗？</label>
                     <div class="w-100">
                         <select class="shadow-sm form-control ml-3" id="is_local" name="is_local">
                             <option value="1" {{ old('local') == '1' ? 'selected' : '' }}>Yes</option>
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-start mt-3">
-                    <label class="m-0 text-end" for="remark">Remark</label>
+                    <label class="m-0 text-end" for="remark">评论</label>
                     <div class="w-100">
                         <input class="shadow-sm form-control ml-3" id="remark" name="remark" type="text" value="{{ old('remark') }}">
                         <div>
@@ -118,15 +118,15 @@
             <div class="--form-wrapper d-flex">
                 <div class="mr-3" style="width: 100px;"></div>
                 <div class="w-100 d-flex justify-content-between mt-3">
-                    <button onclick="resetFields()" class="btn btn-sm text-white btn-warning" type="button">Reset</button>
+                    <button onclick="resetFields()" class="btn btn-sm text-white btn-warning" type="button">重置</button>
                     <div>
-                        <input type="checkbox" name="check" id="check">
-                        <label class="--no-fixed-width mr-2" for="check">Check</label>
-                        <input type="checkbox" name="continue-create" id="continue-create">
-                        <label class="--no-fixed-width mr-2" for="continue-create">Continue Creating</label>
-                        <input type="checkbox" name="continue-edit" id="continue-edit">
-                        <label class="--no-fixed-width mr-2" for="continue-edit">Continue Editing</label>
-                        <button class="btn btn-sm text-white --bg-second" type="submit">Submit</button>
+{{--                        <input type="checkbox" name="check" id="check">--}}
+{{--                        <label class="--no-fixed-width mr-2" for="check">Check</label>--}}
+{{--                        <input type="checkbox" name="continue-create" id="continue-create">--}}
+{{--                        <label class="--no-fixed-width mr-2" for="continue-create">Continue Creating</label>--}}
+{{--                        <input type="checkbox" name="continue-edit" id="continue-edit">--}}
+{{--                        <label class="--no-fixed-width mr-2" for="continue-edit">Continue Editing</label>--}}
+                        <button class="btn btn-sm text-white --bg-second" type="submit">提交</button>
                     </div>
                 </div>
             </div>
